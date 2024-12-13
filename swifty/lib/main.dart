@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'pages/form_username.dart';
+import 'views/form_username.dart';
 
 void main() {
   runApp(const MyApp());
