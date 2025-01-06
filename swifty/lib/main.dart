@@ -1,47 +1,26 @@
 import 'package:flutter/material.dart';
-import 'views/form_username.dart';
+import 'package:provider/provider.dart';
+import 'views/search_user_page.dart';
+import 'views_models/user_viewmodel.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserViewModel()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Swifty',
-      theme: ThemeData(
-        primarySwatch: Colors.purple,
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-            'Swifty Companion',
-            style: TextStyle(color: Colors.white)
-        ),
-        centerTitle: true,
-        backgroundColor: const Color(0xFF800080),
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FormUsername(),
-          ],
-        ),
-      ),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter MVVM',
+      home: SearchUserPage(),
     );
   }
 }
