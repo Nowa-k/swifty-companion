@@ -24,7 +24,7 @@ Widget buildProjectsSection(UserModel user) {
                 color: Colors.deepPurple[100],
                 margin: EdgeInsets.symmetric(vertical: 8),
                 child: ListTile(
-                  leading: Icon(Icons.subdirectory_arrow_right, color: Colors.deepPurple),
+                  leading: Icon(Icons.folder, color: Colors.deepPurple),
                   title: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -50,7 +50,7 @@ Widget buildProjectsSection(UserModel user) {
                     "Note : ${project.note.toStringAsFixed(2)}",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.deepPurple[600],
+                      color: !project.validated && project.status == "finished" ? Colors.red : Colors.green,
                     ),
                   ),
                 ),

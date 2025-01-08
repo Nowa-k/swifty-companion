@@ -8,19 +8,23 @@ Widget buildStatsSection(UserModel user) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Points de Correction :",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple[700],
+            Center(
+              child : Text(
+                "Points de Correction",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple[700],
+                ),
               ),
             ),
-            Text(
-              "${user.correctionPoint}",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.deepPurple[500],
+            Center(
+              child : Text(
+                "${user.correctionPoint}",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.deepPurple[700],
+                ),
               ),
             ),
           ],
@@ -30,19 +34,23 @@ Widget buildStatsSection(UserModel user) {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              "Wallet :",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-                color: Colors.deepPurple[700],
+            Center(
+              child : Text(
+                "Wallet",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple[700],
+                ),
               ),
             ),
-            Text(
-              "${user.wallet}",
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.deepPurple[500],
+            Center(
+              child : Text(
+                "${user.wallet}",
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.deepPurple[700],
+                ),
               ),
             ),
           ],

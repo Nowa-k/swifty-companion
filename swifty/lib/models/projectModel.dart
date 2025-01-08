@@ -16,7 +16,7 @@ class ProjectModel {
         name: json['project']['name'] ?? "Empty",
         note: (json['final_mark'] as num?)?.toDouble() ?? 0.0,
         status: json['status'] ?? "Wait",
-        validated: json['validated'] ?? true,
+        validated: json['validated?'] ?? true
     );
   }
 }

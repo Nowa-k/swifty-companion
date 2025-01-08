@@ -32,6 +32,17 @@ Widget buildProfileSection(UserModel user) {
           ),
         ),
       ),
+      SizedBox(height: 8),
+      Center(
+        child: Text(
+          "${user.email}",
+          style: TextStyle(
+            fontSize: 16,
+            fontStyle: FontStyle.italic,
+            color: Colors.deepPurple[400],
+          ),
+        ),
+      ),
     ],
   );
 }
