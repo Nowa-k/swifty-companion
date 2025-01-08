@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../views_models/user_viewmodel.dart';
+import 'buildProfileSection.dart';
+import 'buildProjectsSection.dart';
+import 'buildStatsSection.dart';
+import 'buildSkillsSection.dart';
 
 class UserDetailPage extends StatelessWidget {
   @override
@@ -15,17 +19,29 @@ class UserDetailPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text("Détails de ${user.name}")),
+      backgroundColor: Colors.deepPurple[50],
+      appBar: AppBar(
+        title: Text("Profil Utilisateur"),
+        backgroundColor: Colors.deepPurple,
+        centerTitle: true,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Nom: ${user.name}", style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text("Email: ${user.email}", style: TextStyle(fontSize: 18)),
-            SizedBox(height: 8),
-            Text("Username: ${user.username}", style: TextStyle(fontSize: 18)),
+            buildProfileSection(user),
+            SizedBox(height: 16),
+            Divider(color: Colors.deepPurple[300]),
+            SizedBox(height: 16),
+            buildStatsSection(user),
+            SizedBox(height: 16),
+            Divider(color: Colors.deepPurple[300]),
+            SizedBox(height: 16),
+            buildSkillsSection(user),
+            Divider(color: Colors.deepPurple[300]),
+            SizedBox(height: 16),
+            buildProjectsSection(user),
           ],
         ),
       ),

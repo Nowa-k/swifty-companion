@@ -1,17 +1,47 @@
-class UserModel {
-  final String id;
-  final String name;
-  final String email;
-  final String username;
+import 'package:swifty/models/projectModel.dart';
+import 'package:swifty/models/skillsModel.dart';
 
-  UserModel({required this.id, required this.name, required this.email, required this.username});
+class UserModel {
+  final int id;
+  final String login;
+  final String fullName;
+  final String email;
+  final String profilePicture;
+  final int correctionPoint;
+  final int wallet;
+  final List<SkillsModel> skills;
+  final List<ProjectModel> projects;
+  //final double level;
+
+  UserModel({
+    required this.id,
+    required this.login,
+    required this.fullName,
+    required this.email,
+    required this.profilePicture,
+    required this.correctionPoint,
+    required this.wallet,
+    /*required this.level,*/
+    required this.skills,
+    required this.projects
+  });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
     return UserModel(
       id: json['id'],
-      name: json['name'],
+      login: json['login'],
+      fullName: json['usual_full_name'],
       email: json['email'],
-      username: json['username'],
+      profilePicture: json['image']['versions']['small'],
+      correctionPoint: json['correction_point'],
+      wallet: json['wallet'],
+      // level: json['level']
+      skills: (json['cursus_users'][0]['skills'] as List<dynamic>)
+          .map((skillJson) => SkillsModel.fromJson(skillJson))
+          .toList(),
+      projects: (json['projects_users'] as List<dynamic>)
+          .map((projectJson) => ProjectModel.fromJson(projectJson))
+          .toList(),
     );
   }
 }

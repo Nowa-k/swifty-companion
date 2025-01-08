@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:swifty/services/api42Auth.dart';
 import '../models/userModel.dart';
 import '../services/apiService.dart';
 
 class UserViewModel extends ChangeNotifier {
 
-  final Api _api = Api();
+  late Api42Auth _auth = Api42Auth(clientId: this.clientId, clientSecret: this.clientSecret);
+  late Api _api;
+  String? _token;
+
   UserModel? _user;
   bool _isLoading = false;
 
@@ -15,7 +19,9 @@ class UserViewModel extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    _user = await _api.fetchUser(username);
+    _token = await _auth.getAccessToken();
+    _api = Api(_token!);
+    _user = await _api.getUser(username);
 
     _isLoading = false;
     notifyListeners();
