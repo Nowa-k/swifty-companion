@@ -15,8 +15,32 @@ class ProjectModel {
     return ProjectModel(
         name: json['project']['name'] ?? "Empty",
         note: (json['final_mark'] as num?)?.toDouble() ?? 0.0,
-        status: json['status'] ?? "Wait",
+        status: setStatusFr(json['status']),
         validated: json['validated?'] ?? true
     );
+  }
+
+  static String setStatusFr(String status) {
+    switch (status) {
+      case "finished" :
+        status = "Terminer";
+        break;
+
+      case "in_progress" :
+        status = "En cours";
+        break;
+
+      case "searching_a_group":
+        status = "Cherche un groupe";
+        break;
+
+      case "waiting_for_correction":
+        status = "Cherche une correction";
+        break;
+      default :
+        print(status);
+        status = "Indéfini";
+    }
+    return (status);
   }
 }

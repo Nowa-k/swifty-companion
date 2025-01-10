@@ -23,6 +23,7 @@ class Api42Auth {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
+      print(data);
       return data['access_token'];
     } else {
       print('Erreur lors de l\'obtention du token : ${response.body}');

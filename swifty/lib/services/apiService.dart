@@ -19,6 +19,7 @@ class Api {
 
     if (response.statusCode == 200) {
       final Map<String, dynamic> json = jsonDecode(response.body);
+
       return UserModel.fromJson(json);
     } else {
       print('Erreur lors de la requête GET : ${response.body}');
