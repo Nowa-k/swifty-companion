@@ -2,13 +2,15 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class Api42Auth {
-  final String clientId;
-  final String clientSecret;
+  final String? clientId;
+  final String? clientSecret;
 
   Api42Auth({required this.clientId, required this.clientSecret});
 
   Future<String?> getAccessToken() async {
     final url = Uri.parse('https://api.intra.42.fr/oauth/token');
+    print("Client ${clientId} ${clientSecret}");
+    print("Secret ${clientSecret}");
     final response = await http.post(
       url,
       headers: {

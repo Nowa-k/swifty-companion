@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 import 'views/search_user_page.dart';
 import 'views_models/user_viewmodel.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: ".env");
+
+  print("CLIENT_ID: ${dotenv.env['CLIENT_ID']}");
+  print("CLIENT_SECRET: ${dotenv.env['CLIENT_SECRET']}");
+
   runApp(
     MultiProvider(
       providers: [
