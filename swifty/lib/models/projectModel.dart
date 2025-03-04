@@ -43,7 +43,6 @@ class ProjectModel {
         break;
 
       default :
-        print(status);
         status = "Indéfini";
     }
     return (status);
