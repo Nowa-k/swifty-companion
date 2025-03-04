@@ -7,9 +7,6 @@ import 'views_models/user_viewmodel.dart';
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
-  print("CLIENT_ID: ${dotenv.env['CLIENT_ID']}");
-  print("CLIENT_SECRET: ${dotenv.env['CLIENT_SECRET']}");
-
   runApp(
     MultiProvider(
       providers: [

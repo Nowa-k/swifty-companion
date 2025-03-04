@@ -23,7 +23,7 @@ Widget buildSkillsSection(UserModel user) {
 }
 
 Widget buildSkills(List<SkillsModel>? skills) {
-  if (skills == null) {
+  if (skills == null || skills.isEmpty) {
     return Center(
       child: Text(
         "Aucune compétence trouvée.",

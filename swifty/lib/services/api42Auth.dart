@@ -9,8 +9,6 @@ class Api42Auth {
 
   Future<String?> getAccessToken() async {
     final url = Uri.parse('https://api.intra.42.fr/oauth/token');
-    print("Client ${clientId} ${clientSecret}");
-    print("Secret ${clientSecret}");
     final response = await http.post(
       url,
       headers: {

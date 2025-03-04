@@ -37,6 +37,11 @@ class ProjectModel {
       case "waiting_for_correction":
         status = "Cherche une correction";
         break;
+
+      case "creating_group":
+        status = "Création d'un groupe";
+        break;
+
       default :
         print(status);
         status = "Indéfini";

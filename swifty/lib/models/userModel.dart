@@ -61,29 +61,13 @@ class UserModel {
   }
 
   static List<SkillsModel>? setSkills(json) {
-    print("Top of setskills");
-    if (json.containsKey('cursus_users')) {
-      print(json['cursus_users'][0]['skills'].length);
-      switch (json['cursus_users'].length) {
-        case 2 :
-          return ((json['cursus_users'][1]['skills'] as List<dynamic>)
-              .map((skillJson) => SkillsModel.fromJson(skillJson))
-              .toList());
-
-        case 1 :
-          if (json['cursus_users'][0]['skills'].length != 0) {
-            return ((json['cursus_users'][0]['skills'] as List<dynamic>)
-                .map((skillJson) => SkillsModel.fromJson(skillJson))
-                .toList());
-          } else {
-            return null;
-          }
-
-        default :
-          return null;
-      }
+    int cursus = json['cursus_users'].length - 1;
+    if (cursus > 1) {
+      cursus = 0;
     }
-    return null;
+    return ((json['cursus_users'][cursus]['skills'] as List<dynamic>)
+            .map((skillJson) => SkillsModel.fromJson(skillJson))
+            .toList());
   }
 
   static List<ProjectModel>? setProjects(json) {
@@ -98,16 +82,9 @@ class UserModel {
 
   static double setLevel(json) {
     if (json.containsKey('cursus_users')) {
-      switch (json['cursus_users'].length) {
-        case 2 :
-          return json['cursus_users'][1]['level'];
-
-        case 1 :
-          return json['cursus_users'][0]['level'];
-
-        default :
-          return 0;
-      }
+      int index = json['cursus_users'].length;
+      if (index > 3) { index = 3; }
+      return json['cursus_users'][index - 1]['level'];
     }
     return 0;
   }
